@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Fortline</title>
+
+    <link rel="stylesheet" href="impressao.css">
+
+</head>
+
+  <body>   
+
+<div class="cabecalho-impressao">
+
+    <div>
+
+        <h1 id="nome-linha"></h1>
+
+        <p id="qtd-produtos"></p>
+
+    </div>
+
+    <img
+        src="imagens/logo_fortline_impressao.png"
+        class="logo-impressao"
+        onerror="this.style.display='none'"
+    >
+
+</div>
+
+<div id="dados-linha"></div>
+
+<div id="lista-produtos"></div>
+
+<script src="produtos.js"></script>
+<script src="app.js"></script>
+<script src="config.js"></script>
+
+<script>
+
+    const linha =
+        localStorage.getItem(
+            'linhaImpressao'
+        );
+
+    document.getElementById(
+        'nome-linha'
+    ).innerText = linha;
+
+    const produtosLinha =
+        produtos.filter(produto => {
+
+            return (
+                normalizarTexto(produto.linha)
+                ===
+                normalizarTexto(linha)
+            );
+
+        });
+
+    document.getElementById(
+        'qtd-produtos'
+    ).innerText =
+        `
+    ${configuracaoCatalogo.versao} • ${produtosLinha.length} produtos
+    ${configuracaoCatalogo.site}
+    ${configuracaoCatalogo.telefone}
+`;
+    const lista =
+        document.getElementById(
+            'lista-produtos'
+        );
+        const dados =
+    dadosLinhas[linha] || {
+
+    };
+
+    dados.Conceito =
+    dados.Conceito ||
+    'Descrição em desenvolvimento.';
+
+dados.Composições =
+    dados.Composições ||
+    'Informações em desenvolvimento.';
+
+
+//acabamentos    
+    let htmlAcabamentos = '';
+//observação do acabamentos
+    let htmlObsAcabamentos = '';
+
+    //objeto das observações do acabamento
+    Object.entries(
+    dados.obs_acabamentos || {}
+).forEach(([nome, valor]) => {
+
+    htmlObsAcabamentos += `
+
+        <p class="obs-acabamento">
+
+            <strong>${nome}:</strong>
+
+            ${valor}
+
+        </p>
+
+    `;
+
+});
+
+// acabamentos
+Object.entries(
+    dados.acabamentos || {}
+).forEach(([categoria, itens]) => {
+
+    htmlAcabamentos += `
+
+        <h3 class="titulo-acabamento">
+            ${categoria
+                .replaceAll('_', ' ')
+               }  
+        </h3>
+
+        <div class="grid-acabamentos-impressao">
+
+    `;
+
+    itens.forEach(item => {
+
+        htmlAcabamentos += `
+
+            <div class="card-acabamento-impressao">
+
+                <img
+                    src="imagens/${item.imagem}"
+                    class="imagem-acabamento-impressao"
+                    onerror="
+                           this.src='imagens/sem_imagem.jpg'
+                            "
+                >
+
+                <p>
+                    ${item.nome}
+                </p>
+
+            </div>
+
+        `;
+
+    });
+
+    htmlAcabamentos += `
+
+        </div>
+
+    `;
+
+});
+
+document.getElementById(
+    'dados-linha'
+).innerHTML = `
+
+    <div class="bloco-linha">
+
+        <h2>Conceito</h2>
+
+        ${dados.Conceito}
+
+    </div>
+
+    <div class="bloco-linha">
+
+        <h2>Composições</h2>
+
+        ${dados.Composições}
+
+    </div>
+
+    <div class="bloco-linha">
+
+        <h2>Acabamentos</h2>
+
+        ${htmlAcabamentos}
+
+        ${htmlObsAcabamentos}
+
+    </div>
+
+    
+
+`;
+
+    const grupos = {};
+
+produtosLinha.forEach(produto => {
+
+    const grupo =
+        produto.grupo || 'OUTROS';
+
+    if (!grupos[grupo]) {
+
+        grupos[grupo] = [];
+
+    }
+
+    grupos[grupo].push(produto);
+
+});
+
+let html = '';
+
+Object.entries(grupos)
+    .forEach(([nomeGrupo, produtosGrupo]) => {
+
+        //cria variavel e extrai os dados do produto.js
+        const especificacao =
+            produtosGrupo[0].especificacao || '';
+
+        const observacao =
+            produtosGrupo[0].obs || '';    
+
+
+        //agrupamento nos cards    
+        const agrupamentos = {};
+
+produtosGrupo.forEach(produto => {
+
+    const chave =
+        produto.agrupamento || '';
+
+    if (!agrupamentos[chave]) {
+
+        agrupamentos[chave] = [];
+
+    }
+
+    agrupamentos[chave].push(produto);
+
+});
+
+        //titulo do grupo e especificação do grupo    
+         html += `
+            <h2 class="titulo-grupo">
+                ${nomeGrupo}
+            </h2>
+            
+            ${especificacao ? `
+                <p class="descricao-grupo">
+                    ${especificacao}
+                </p>
+            ` : ''}
+
+             ${observacao ? `
+                <p class="descricao-obs">
+                    ${observacao}
+                </p>
+            ` : ''}
+
+            <div class="cards-grupo">
+        `;
+
+Object.entries(agrupamentos)
+.forEach(([agrupamento, itens]) => {
+
+    // SEM AGRUPAMENTO
+    if (!agrupamento) {
+
+        itens.forEach(produto => {
+
+            html += `
+
+                <div class="card-produto">
+
+                    ${produto.badge ? `
+                        <div class="badge-produto">
+                            ${produto.badge}
+                        </div>
+                    ` : ''}
+
+                    <img
+                        src="imagens/${produto.imagem || 'sem_imagem.jpg'}"
+                        class="imagem-produto"
+                        onerror="this.src='imagens/sem_imagem.jpg'"
+                    >
+
+                    <h3>${produto.codigo}</h3>
+
+                    <p class="produto-focco">
+                        Código Focco: ${produto.cod_focco}
+                    </p>
+
+                    <p class="descricao-produto">
+                        ${produto.descricao}
+                    </p>
+
+                    <p class="dimensao-produto">
+                        L ${produto.largura}
+                        X
+                        P ${produto.profundidade}
+                        X
+                        A ${produto.altura}
+                    </p>
+
+                    <p class="valor-produto">
+                        ${formatarMoeda(produto.valor)}
+                    </p>
+
+                </div>
+
+            `;
+
+        });
+
+    }
+
+    // COM AGRUPAMENTO
+    else {
+
+        const produtoBase =
+            itens[0];
+
+        html += `
+
+            <div class="produto-agrupado">
+
+                ${produtoBase.badge ? `
+
+    <div class="badge-produto-agrupado">
+
+        ${produtoBase.badge}
+
+    </div>
+
+` : ''}
+
+                <img
+                    src="imagens/${produtoBase.imagem || 'sem_imagem.jpg'}"
+                    class="imagem-agrupada"
+                    onerror="this.src='imagens/sem_imagem.jpg'"
+                >
+                
+                <div class="dados-agrupados">
+
+                <table class="tabela-agrupada">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Código</th>
+
+                            <th>Código Focco</th>
+
+                            <th>Largura</th>
+
+                            <th>Prof.</th>
+
+                            <th>Altura</th>
+
+                            <th>Valor</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+        `;
+
+        itens.forEach(produto => {
+
+            html += `
+
+                <tr>
+
+                    <td>${produto.codigo}</td>
+
+                    <td>${produto.cod_focco}</td>
+
+                    <td>${produto.largura}</td>
+
+                    <td>${produto.profundidade}</td>
+
+                    <td>${produto.altura}</td>
+
+                    <td>${formatarMoeda(produto.valor)}</td>
+
+                </tr>
+
+            `;
+
+        });
+
+        html += `
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>    
+
+        `;
+
+    }
+
+});
+
+        html += `
+            </div>
+        `;
+
+    });
+
+lista.innerHTML = html;
+
+// Dá tempo das imagens carregarem
+window.onload = () => {
+
+    setTimeout(() => {
+
+        window.print();
+
+    }, 500);
+
+};
+
+</script>
+
+</body>
+
+</html>
