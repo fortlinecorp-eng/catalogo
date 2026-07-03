@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Fortline</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+<aside class="sidebar">
+
+    <div class="logo-sidebar">
+
+        <img
+            src="imagens/logo_fortline_white.png"
+            alt="Fortline"
+        >
+
+    </div>
+
+    <h3>Linhas</h3>
+
+    <ul id="lista-linhas"></ul>
+
+</aside>
+
+
+        <main class="conteudo">
+
+            <header class="topbar">
+
+                <h1>Catálogo Comercial</h1>
+
+                <input 
+                    type="text" 
+                    id="busca" 
+                    placeholder="Buscar produto..."
+                >
+
+            </header>
+        
+            <section id="detalhes-linha" class="detalhes-linha">
+
+            <div class="header-linha">
+
+            <h2>Selecione uma linha</h2>
+
+            </div>
+
+            </section>
+
+            <section class="tabela-area" id="tabela-area">
+              
+                <div id="lista-produtos" class="lista-produtos">
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <div id="modal-produto" class="modal">
+
+        <div class="modal-conteudo">
+
+            <span id="fechar-modal">&times;</span>
+
+            <h2>Detalhes do Produto</h2>
+
+            <div id="detalhes-produto"></div>
+
+        </div>
+
+    </div>
+
+    <script src="produtos.js"></script>
+    <script src="app.js"></script>
+
+<div id="area-impressao"></div>
+
+</body>
+</html>
