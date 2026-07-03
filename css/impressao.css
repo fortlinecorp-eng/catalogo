@@ -1,0 +1,347 @@
+*{
+
+    @media print {
+
+    * {
+
+        -webkit-print-color-adjust: exact !important;
+
+        print-color-adjust: exact !important;
+
+    }
+
+}
+
+#lista-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    page-break-before: always;
+    break-before: page;
+}
+
+.card-produto {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    font-size: 9px;
+    width: calc(25% - 7px);
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 6px;*/
+    padding: 8px;
+    line-height: 9px;
+    box-sizing: border-box;
+}
+
+.imagem-produto {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+}
+
+.badge-produto  {
+    background: #dc3545 !important;
+    color: white !important;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 9px;
+    margin-bottom: 5px;
+     -webkit-print-color-adjust: exact;
+     print-color-adjust: exact;
+}
+
+.badge-produto-agrupado {
+
+
+    position: absolute;
+
+    top: 5px;
+
+    left: 5px;
+
+    z-index: 10;
+
+    background-color: #dc3545 !important;
+
+    color: white !important;
+
+    padding: 2px 6px;
+
+    border-radius: 4px;
+
+    font-size: 8px;
+
+    -webkit-print-color-adjust: exact !important;
+
+    print-color-adjust: exact !important;
+
+}
+
+.descricao-produto {
+    font-size: 8px;
+}
+.descricao-grupo {
+    font-size: 12px;
+    text-align: justify;
+    text-indent: 30px;
+}
+
+.descricao-obs {
+    margin-top: -15px ;
+    font-size: 12px;
+    text-align: justify;
+    text-indent: 30px;
+    color: #215AA8;
+}
+
+.dimensao-produto {
+    font-size: 8px;
+    color: #666;
+}
+
+.valor-produto {
+    font-weight: bold;
+}
+.titulo-grupo {
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: -6px;
+    font-size: 12px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.cards-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+}
+.grid-acabamentos-impressao {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+
+   border-bottom: 2px solid #ccc;
+
+    break-inside: avoid;
+
+    page-break-inside: avoid;
+
+}
+
+.card-acabamento-impressao {
+
+    width: 60px;
+
+    text-align: center;
+
+    font-size: 8px;
+
+
+}
+
+.imagem-acabamento-impressao {
+
+    width: 60px;
+
+    height: 60px;
+
+    object-fit: cover;
+
+    border: 1px solid #cfcfcf;
+
+    border-radius: 4px;
+
+    box-shadow:
+        inset 0 0 0 1px #f5f5f5;
+
+     text-align: center;
+
+    padding: 5px;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 6px;    
+
+}
+
+.card-acabamento-impressao p {
+
+    font-size: 8px;
+
+    margin-top: -4px;
+
+     break-inside: avoid;
+    page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+     padding: 8px;
+    line-height: 9px;
+    box-sizing: border-box;
+
+
+
+}
+
+.titulo-acabamento {
+
+    margin-top: 15px;
+
+    margin-bottom: 8px;
+
+    color: #215AA8;
+
+    font-size: 14px;
+
+    break-inside: avoid;
+    
+    page-break-inside: avoid;
+
+}
+.cabecalho-impressao {
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    /*margin-bottom: 30px;*/
+
+    border-bottom: 2px solid #215AA8;
+
+    /*padding-bottom: 6px;*/  
+
+}
+.logo-impressao {
+
+    width: 220px;
+
+    height: auto;
+
+}
+#nome-linha {
+
+    margin: 0;
+
+    color: #215AA8;
+
+    font-size: 34px;
+
+    line-height: 1;
+
+}
+#qtd-produtos {
+
+    margin-top: -10px;
+
+    color: #666;
+
+    font-size: 14px;
+
+}
+.bloco-linha p,
+.bloco-linha li {
+
+    color: black;
+    ;
+    text-align: justify;
+
+    line-height: 1.3;
+
+    font-size: 14px;
+    
+}
+.bloco-linha h2 {
+
+    margin-bottom: 5px;
+
+    color: #0b5ed7;
+
+    font-size: 16px;
+}
+.produto-agrupado {
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: flex-start;
+
+    width: 100%;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #ddd;
+
+    padding: 4px;
+
+    border-radius: 6px;
+
+    break-inside: avoid !important;
+
+    page-break-inside: avoid !important;
+
+    page-break-before: auto;
+
+    position: relative;
+
+}
+
+.imagem-agrupada {
+
+    width: 110px;
+
+    height: auto;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+
+}
+
+.tabela-agrupada {
+
+    width: 100%;
+
+    table-layout: fixed;
+
+    border-collapse: collapse;
+
+    font-size: 9px;
+
+    margin-top: 8px;
+
+}
+
+
+.tabela-agrupada th,
+.tabela-agrupada td {
+
+    border: 1px solid #ccc;
+
+    padding: 4px;
+
+    text-align: center;
+
+}
+
+.tabela-agrupada th {
+
+    background: #f2f2f2;
+
+}
+.dados-agrupados {
+
+    flex: 1;
+
+}
+}
