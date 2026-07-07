@@ -560,6 +560,24 @@ tr:hover {
     line-height: 1.5;
 }
 
+.descricao-grupo {
+    margin-top: -5px ;
+    /*font-size: 12px; */
+    text-align: justify;
+    /*text-indent: 30px;*/
+    color: black;
+    line-height: 1.5;
+}
+
+.descricao-obs {
+    margin-top: -5px ;
+    /*font-size: 12px; */
+    text-align: justify;
+    /*text-indent: 30px;*/
+    color: #215AA8;
+    line-height: 1.5;
+}
+
 .bloco-linha li {
 
     margin-bottom: 12px;
@@ -907,5 +925,6 @@ tr:hover {
     color: #444;
 
 }
+
 
 }
