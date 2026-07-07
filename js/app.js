@@ -59,6 +59,22 @@ const acabamentosPadrao = {
         { nome: 'Argila', imagem: 'metal_argila.jpg' },
         { nome: 'Ovo', imagem: 'metal_ovo.jpg' }
     ],
+        'tecido': [
+        { nome: 'Vinho', imagem: 'tec_vinho.jpg' },
+        { nome: 'Vermelho Concept', imagem: 'tec_vermelho_concept.jpg' },
+        { nome: 'Vermelho', imagem: 'tec_vermelho.jpg' },
+        { nome: 'Verde Concept', imagem: 'tec_verde_concept.jpg' },
+        { nome: 'Verde', imagem: 'tec_verde.jpg' },
+        { nome: 'Preto', imagem: 'tec_preto.jpg' },
+        { nome: 'Laranja Concept', imagem: 'tec_laranja_concept.jpg' },
+        { nome: 'Laranja', imagem: 'tec_laranja.jpg' },
+        { nome: 'Cinza Concept', imagem: 'tec_cinza_concept.jpg' },
+        { nome: 'Cinza', imagem: 'tec_cinza.jpg' },
+        { nome: 'Bege Concept', imagem: 'tec_bege_concept.jpg' },
+        { nome: 'Azul Escuro', imagem: 'tec_azul_escuro.jpg' },
+        { nome: 'Azul Concept', imagem: 'tec_azul_concept.jpg' },
+        { nome: 'Azul Claro', imagem: 'tec_azul_claro.jpg' }
+    ],
     'vidros_coloridos': [
         { nome: 'Vermelho', imagem: 'vidro_vermelho.jpg' },
         { nome: 'Verde', imagem: 'vidro_verde.jpg' },
@@ -553,6 +569,53 @@ const dadosLinhas = {
             imagens: 'https://drive.google.com/drive/folders/1JFvhokNT5A3BBuvPUfKpt4ZfCCyTrUZo',
             videos: null
         }
+    },
+        'JUST': {
+        'Conceito': `
+        <p>
+        <strong>Uma gama completa de soluções.</strong> Pensada para resolver de forma simples e versátil diferentes necessidades, 
+        a Just foi desenhada reunindo soluções técnicas inteligentes, com design funcional dedicado à melhor experiência dos seus usuários.									
+		</p>									
+        `,
+        'Composições': `
+        <ul>
+        <li>
+        <strong>PLATAFORMA: </strong>
+        Acesso Fácil e descentralizado para tomadas. Calha leito profunda para acomodação perfeita de cabos e fontes. Pé shaft com 
+        tamanho ideal para subida e acomodação de cabos. Fixação fácil de painéis divisores pela parte superior do tampo. Planos de 
+        trabalho moduláveis e dinâmicos para equipes.
+        </li>
+        <li>
+        <strong>INDIVIDUAL: </strong>
+        Tampos com diversas opções de tamanho, ideal para cada necessidade. Várias opções diferentes de pés. Tomadas posicionadas para 
+        melhor acomodação de carregadores e conexão de dados completa. Produto de acordo com as normas técnicas da ABNT. Espaços de uso 
+        individual, retas ou em "L'' com superficie de trabalho ampliada.
+        </li>
+        <li>
+        <strong>GERÊNCIA: </strong>
+        Diferentes de medidas de tampo. Armário de serviço com caixa de tomadas padrão Operis.Opções diferentes de pés. Soluções sob 
+        medida para necessidades especiais. Produto de acordo com as Normas Técnicas da ABNT. Mesas individuais distintivas com armário 
+        de apoio integrado.
+        </li>
+        <li>
+        <strong>REUNIÃO: </strong>
+        Diferentes formatos e medidas. Opções diferentes de pés Soluções sob medida para necessidades especiais. Produto de acordo com 
+        as normas Técnicas da ABNT. Planos componíveis para ambientes de reunião de todas as escalas.
+        </li>
+        </ul>
+        `,
+        acabamentos: {
+            'Melamínico': acabamentosPadrao['melamínico'],
+            'Metálicos': acabamentosPadrao['metalicos'],
+            'Gaveta em aço': acabamentosPadrao['gaveta_aço'],
+            'Painel Suspenso Vidro Colorido': acabamentosPadrao['vidros_coloridos'],
+            'Painel Suspenso Revestido em Tecido': acabamentosPadrao['tecido']
+        },
+        links: {
+            catalogo: 'https://drive.google.com/file/d/194AsBjMRE8APgyvQcP54R9dXtrhEHzu_/view',
+            imagens: 'https://drive.google.com/drive/folders/1whaLYClRdL9U-ME_YfBLaub3lEaqhIDg',
+            videos: null
+        }
     }
 };
 
@@ -764,6 +827,7 @@ function renderizarTabela(listaProdutos) {
     // Para cada grupo cria título, especificação opcional e área de cards.
     Object.entries(grupos).forEach(([nomeGrupo, produtosGrupo]) => {
         const especificacao = produtosGrupo[0].especificacao || '';
+        const obs = produtosGrupo[0].obs || '';
 
         const tituloGrupo = document.createElement('h2');
         tituloGrupo.className = 'titulo-grupo';
@@ -774,6 +838,13 @@ function renderizarTabela(listaProdutos) {
             const descricao = document.createElement('p');
             descricao.className = 'descricao-grupo';
             descricao.innerText = especificacao;
+            container.appendChild(descricao);
+        }
+        
+        if (obs) {
+            const descricao = document.createElement('p');
+            descricao.className = 'descricao-obs';
+            descricao.innerText = obs;
             container.appendChild(descricao);
         }
 
