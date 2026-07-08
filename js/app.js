@@ -13,6 +13,8 @@ logCacheVersion()
 
 'use strict';
 
+window.location.reload(true);
+
 let produtos = [];
 let acabamentosPadrao = {};
 let dadosLinhas = {};
