@@ -1,0 +1,107 @@
+{    
+    "melaminico": [
+        { "nome": "Argila", "imagem": "mdp_argila.jpg" },
+        { "nome": "Azul Secreto", "imagem": "mdp_azul_secreto.jpg" },
+        { "nome": "Blush", "imagem": "mdp_blush.jpg" },
+        { "nome": "Branco", "imagem": "mdp_branco.jpg" },
+        { "nome": "Carvalho Avelã", "imagem": "mdp_carvalho_avela.jpg" },
+        { "nome": "Carvalho Hanover", "imagem": "mdp_carvalho_hanover.jpg" },
+        { "nome": "Carvalho Munique", "imagem": "mdp_carvalho_munique.jpg" },
+        { "nome": "Carvalho Prata", "imagem": "mdp_carvalho_prata.jpg" },
+        { "nome": "Cinza Sagrado", "imagem": "mdp_cinza_sagrado.jpg" },
+        { "nome": "Grafite", "imagem": "mdp_grafite.jpg" },
+        { "nome": "Itapuã", "imagem": "mdp_itapua.jpg" },
+        { "nome": "Moss", "imagem": "mdp_moss.jpg" },
+        { "nome": "Noce Mare", "imagem": "mdp_noce_mare.jpg" },
+        { "nome": "Nogueira Thar", "imagem": "mdp_nogueira_thar.jpg" },
+        { "nome": "Ovo", "imagem": "ovo.jpg" },
+        { "nome": "Platina", "imagem": "mdp_platina.jpg" },
+        { "nome": "Preto", "imagem": "mdp_preto.jpg" }
+    ],
+        "metalicos": [
+        { "nome": "Terracota", "imagem": "metal_terracota.jpg" },
+        { "nome": "Prata", "imagem": "metal_prata.jpg" },
+        { "nome": "Oliva", "imagem": "metal_oliva.jpg" },
+        { "nome": "Ocre", "imagem": "metal_ocre.jpg" },
+        { "nome": "Branco", "imagem": "metal_branco.jpg" },
+        { "nome": "Preto", "imagem": "metal_preto.jpg" },
+        { "nome": "Platina", "imagem": "metal_platina.jpg" },
+        { "nome": "Grafite", "imagem": "metal_grafite.jpg" },
+        { "nome": "Argila", "imagem": "metal_argila.jpg" },
+        { "nome": "Ovo", "imagem": "metal_ovo.jpg" }
+    ],
+        "tecido": [
+        { "nome": "Vinho", "imagem": "tec_vinho.jpg" },
+        { "nome": "Vermelho Concept", "imagem": "tec_vermelho_concept.jpg" },
+        { "nome": "Vermelho", "imagem": "tec_vermelho.jpg" },
+        { "nome": "Verde Concept", "imagem": "tec_verde_concept.jpg" },
+        { "nome": "Verde", "imagem": "tec_verde.jpg" },
+        { "nome": "Preto", "imagem": "tec_preto.jpg" },
+        { "nome": "Laranja Concept", "imagem": "tec_laranja_concept.jpg" },
+        { "nome": "Laranja", "imagem": "tec_laranja.jpg" },
+        { "nome": "Cinza Concept", "imagem": "tec_cinza_concept.jpg" },
+        { "nome": "Cinza", "imagem": "tec_cinza.jpg" },
+        { "nome": "Bege Concept", "imagem": "tec_bege_concept.jpg" },
+        { "nome": "Azul Escuro", "imagem": "tec_azul_escuro.jpg" },
+        { "nome": "Azul Concept", "imagem": "tec_azul_concept.jpg" },
+        { "nome": "Azul Claro", "imagem": "tec_azul_claro.jpg" }
+    ],
+    "vidros_coloridos": [
+        { "nome": "Vermelho", "imagem": "vidro_vermelho.jpg" },
+        { "nome": "Verde", "imagem": "vidro_verde.jpg" },
+        { "nome": "Jateado", "imagem": "vidro_jateado.jpg" },
+        { "nome": "Incolor", "imagem": "vidro_incolor.jpg" },
+        { "nome": "Azul", "imagem": "vidro_azul.jpg" },
+        { "nome": "Amarelo", "imagem": "vidro_amarelo.jpg" }
+    ],
+    "lamina_madeira": [
+        { "nome": "Black Walnut", "imagem": "verniz_black_walnut.jpg" },
+        { "nome": "Carvalho Americano", "imagem": "verniz_carvalho_americano.jpg" },
+        { "nome": "Freijo Quartier", "imagem": "verniz_freijo_quartier.jpg" },
+        { "nome": "Pau Ferro", "imagem": "verniz_pau_ferro.jpg" },
+        { "nome": "Wenge Linheiro Tipo 2", "imagem": "verniz_wenge_linheiro_tipo_2.jpg" }
+    ],
+    "gaveta_aco": [
+        { "nome": "Argila", "imagem": "metal_argila.jpg" },
+        { "nome": "Branco", "imagem": "metal_branco.jpg" },
+        { "nome": "Ovo", "imagem": "metal_ovo.jpg" },
+        { "nome": "Prata", "imagem": "metal_prata.jpg" },
+        { "nome": "Preto", "imagem": "metal_preto.jpg" }
+    ],
+    "tecido_chatterbox": [
+        { "nome": "Azul Claro (202890)", "imagem": "tec_azul_claro_202890.jpg" },
+        { "nome": "Azul Escuro (162694)", "imagem": "tec_azul_escuro_162694.jpg" },
+        { "nome": "Terracota (182741)", "imagem": "tec_terracota_182741.jpg" },
+        { "nome": "Laranja (90033)", "imagem": "tec_laranja_90033.jpg" },
+        { "nome": "Vermelho (50113)", "imagem": "tec_vermelho_50113.jpg" },
+        { "nome": "Cerâmica (90052)", "imagem": "tec_ceramica_90052.jpg" },
+        { "nome": "Verde Escuro (197561)", "imagem": "tec_verde_escuro_197561.jpg" },
+        { "nome": "Verde Claro (162684)", "imagem": "tec_verde_claro_162684.jpg" },
+        { "nome": "Grafite (30131)", "imagem": "tec_grafite_30131.jpg" },
+        { "nome": "Cinza Claro (162687)", "imagem": "tec_cinza_claro_162687.jpg" },
+        { "nome": "Natural (162679)", "imagem": "tec_natural_162679.jpg" },
+        { "nome": "Amarelo (90035)", "imagem": "tec_amarelo_90035.jpg" }
+    ],
+    "corpo_mdp_armario_gaveteiro_argus": [
+        { "nome": "Preto", "imagem": "mdp_preto.jpg" },
+        { "nome": "Grafite", "imagem": "mdp_grafite.jpg" }
+    ],
+    "marmore": [
+        { "nome": "Cachoeiro", "imagem": "marmore_cachoeiro.jpg" },
+        { "nome": "Traventino", "imagem": "marmore_traventino.jpg" },
+        { "nome": "Preto São Gabriel", "imagem": "marmore_preto_sao_gabriel.jpg" }
+    ],
+    "softline_corpo_arm_gav_pe_painel": [
+        { "nome": "Argila", "imagem": "mdp_argila.jpg" },
+        { "nome": "Branco", "imagem": "mdp_branco.jpg" },
+        { "nome": "Gris", "imagem": "mdp_gris.jpg" },
+        { "nome": "Ovo", "imagem": "mdp_ovo.jpg" },
+        { "nome": "Platina", "imagem": "mdp_platina.jpg" },
+        { "nome": "Preto Onix", "imagem": "mdp_preto_onix.jpg" }
+    ],
+    "lean_corpo_arm_gav_pe_painel": [
+        { "nome": "Branco", "imagem": "mdp_branco.jpg" },
+        { "nome": "Gris", "imagem": "mdp_gris.jpg" },
+        { "nome": "Preto Onix", "imagem": "mdp_preto_onix.jpg" }
+    ]
+}
