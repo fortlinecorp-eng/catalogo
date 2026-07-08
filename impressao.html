@@ -33,12 +33,60 @@
 
 <div id="lista-produtos"></div>
 
-<script src="js/produtos.js"></script>
-<script src="js/app.js"></script>
 <script src="js/config.js"></script>
 
 <script>
 
+    let produtos = [];
+    let dadosLinhas = {};
+    let acabamentosPadrao = {};
+
+async function carregarDados() {
+
+    const [respProdutos, respLinhas, respAcabamentos] =
+        await Promise.all([
+
+            fetch(`dados/produtos.json?v=${configuracaoCatalogo.cacheVersion}`),
+
+            fetch(`dados/dadosLinhas.json?v=${configuracaoCatalogo.cacheVersion}`),
+
+            fetch(`dados/acabamentos.json?v=${configuracaoCatalogo.cacheVersion}`)
+
+        ]);
+
+    produtos = await respProdutos.json();
+    dadosLinhas = await respLinhas.json();
+    acabamentosPadrao = await respAcabamentos.json();
+
+    iniciarImpressao();
+
+}
+
+carregarDados();
+
+function normalizarTexto(texto) {
+
+    return (texto || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toUpperCase()
+        .trim();
+
+}
+
+function formatarMoeda(valor) {
+
+    return Number(valor).toLocaleString(
+        'pt-BR',
+        {
+            style: 'currency',
+            currency: 'BRL'
+        }
+    );
+
+}
+
+function iniciarImpressao(){
     const linha =
         localStorage.getItem(
             'linhaImpressao'
@@ -91,7 +139,7 @@ dados.Composições =
     let htmlObsAcabamentos = '';
 
     //objeto das observações do acabamento
-    Object.entries(
+Object.entries(
     dados.obs_acabamentos || {}
 ).forEach(([nome, valor]) => {
 
@@ -112,14 +160,15 @@ dados.Composições =
 // acabamentos
 Object.entries(
     dados.acabamentos || {}
-).forEach(([categoria, itens]) => {
+).forEach(([categoria, chave]) => {
+
+    const itens =
+        acabamentosPadrao[chave] || [];
 
     htmlAcabamentos += `
 
         <h3 class="titulo-acabamento">
-            ${categoria
-                .replaceAll('_', ' ')
-               }  
+            ${categoria.replaceAll('_', ' ')}
         </h3>
 
         <div class="grid-acabamentos-impressao">
@@ -128,6 +177,8 @@ Object.entries(
 
     itens.forEach(item => {
 
+        console.log(item.imagem);
+
         htmlAcabamentos += `
 
             <div class="card-acabamento-impressao">
@@ -135,14 +186,9 @@ Object.entries(
                 <img
                     src="imagens/${item.imagem}"
                     class="imagem-acabamento-impressao"
-                    onerror="
-                           this.src='imagens/sem_imagem.jpg'
-                            "
                 >
 
-                <p>
-                    ${item.nome}
-                </p>
+                <p>${item.nome}</p>
 
             </div>
 
@@ -157,6 +203,7 @@ Object.entries(
     `;
 
 });
+
 
 document.getElementById(
     'dados-linha'
@@ -190,9 +237,7 @@ document.getElementById(
 
         ${htmlObsAcabamentos}
 
-    </div>
-
-    
+    </div>  
 
 `;
 
@@ -286,7 +331,6 @@ Object.entries(agrupamentos)
                     <img
                         src="imagens/${produto.imagem || 'sem_imagem.jpg'}"
                         class="imagem-produto"
-                        onerror="this.src='imagens/sem_imagem.jpg'"
                     >
 
                     <h3>${produto.codigo}</h3>
@@ -342,7 +386,6 @@ Object.entries(agrupamentos)
                 <img
                     src="imagens/${produtoBase.imagem || 'sem_imagem.jpg'}"
                     class="imagem-agrupada"
-                    onerror="this.src='imagens/sem_imagem.jpg'"
                 >
                 
                 <div class="dados-agrupados">
@@ -420,8 +463,35 @@ Object.entries(agrupamentos)
 
 lista.innerHTML = html;
 
+document.querySelectorAll('img').forEach(img => {
+
+    img.addEventListener('error', function() {
+
+        console.log('CAPTUREI ERRO:', this.src);
+
+        this.src = 'imagens/sem_imagem.jpg?v=1';
+
+    }, true);
+
+});
+
 // Dá tempo das imagens carregarem
-window.onload = () => {
+const imagens = document.querySelectorAll("img");
+
+Promise.all(
+    [...imagens].map(img => {
+
+        if (img.complete) return Promise.resolve();
+
+        return new Promise(resolve => {
+
+            img.onload = resolve;
+            img.onerror = resolve;
+
+        });
+
+    })
+).then(() => {
 
     setTimeout(() => {
 
@@ -429,8 +499,8 @@ window.onload = () => {
 
     }, 500);
 
-};
-
+});
+}
 </script>
 
 </body>
