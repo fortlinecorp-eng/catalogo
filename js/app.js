@@ -13,8 +13,6 @@ logCacheVersion()
 
 'use strict';
 
-window.location.href = window.location.href + '?timestamp=' + new Date().getTime()
-
 let produtos = [];
 let acabamentosPadrao = {};
 let dadosLinhas = {};
