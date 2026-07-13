@@ -133,5 +133,15 @@
       "imagens": "https://drive.google.com/drive/folders/1whaLYClRdL9U-ME_YfBLaub3lEaqhIDg",
       "videos": null
     }
+  },
+  "ADAPTA": {
+    "status": "lancamento",
+    "Conceito": "A Adapta foi desenhada para acompanhar o ritmo e as necessidades físicas de cada profissional ao longo do dia. Em um único posto de trabalho, o usuário transita fluidamente entre as posições sentado e em pé, prevenindo dores e melhorando a circulação sanguínea.<ul><p><li><strong>Regulação Elétrica:</strong> Ajuste de altura automatizado, silencioso e suave através de um painel de controle integrado.</li></p><p><li><strong>Design Ergonômico:</strong> Foco na postura correta, reduzindo a fadiga e aumentando a produtividade diária.</li></p><p><li><strong>Versatilidade:</strong> Ideal para estações de trabalho colaborativas ou mesas gerenciais, adaptando-se instantaneamente a múltiplos usuários.</p></li><p><li><strong>Estética Moderna:</strong> Linhas limpas e acabamentos de alto padrão que agregam sofisticação e valorizam a identidade visual da empresa.</li></p><br></ul><p>A Linha Adapta é a solução definitiva para empresas que buscam modernizar seus espaços e colocar o conforto e a saúde dos colaboradores em primeiro lugar.</p>",
+    "Composições": "<ul><li>Mesa de Trabalho</li><li>Mesa Reunião</li><li>Mesa Plataforma</li><li>Mesa Gerência</li>",
+    "acabamentos": {
+      "Melamínico": "melaminico",
+      "Estrutura Elétrica": "estrutura_eletrica",
+      "Gaveta em aço": "gaveta_aco"
+    }
   }
 }
