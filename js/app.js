@@ -7,6 +7,7 @@
 
 logCacheVersion()
 
+
 // =============================================================================
 // 1. VALIDAÇÃO INICIAL E ESTADO GLOBAL
 // =============================================================================
@@ -146,11 +147,13 @@ const linhasOrdenadas = [
 
     linhasOrdenadas.forEach(linha => {
         const li = document.createElement('li');
-        if (dadosLinhas[linha]?.status === "lancamento") {
+ if (dadosLinhas[linha]?.status === "lancamento") {
 
     li.innerHTML = `
-        <span class="icone-lancamento">🆕</span>
         ${linha}
+        <span class="badge-linha">
+            LANÇAMENTO
+        </span>
     `;
 
     li.classList.add("linha-lancamento");
