@@ -925,6 +925,19 @@ tr:hover {
     color: #444;
 
 }
+.linha-lancamento {
+
+    font-weight: bold;
+
+    color: #d32f2f;
+
+}
+
+.icone-lancamento {
+
+    margin-right: 6px;
+
+}
 
 
 }
