@@ -117,9 +117,49 @@ function carregarLinhas() {
 
     linhasUnicas.sort();
 
-    linhasUnicas.forEach(linha => {
+    const linhasLancamento = [];
+const linhasNormais = [];
+
+linhasUnicas.forEach(nome => {
+
+    const status = dadosLinhas[nome]?.status;
+
+    if (status === "lancamento") {
+
+        linhasLancamento.push(nome);
+
+    } else {
+
+        linhasNormais.push(nome);
+
+    }
+
+});
+
+linhasLancamento.sort();
+linhasNormais.sort();
+
+const linhasOrdenadas = [
+    ...linhasLancamento,
+    ...linhasNormais
+];
+
+    linhasOrdenadas.forEach(linha => {
         const li = document.createElement('li');
-        li.innerText = linha;
+        if (dadosLinhas[linha]?.status === "lancamento") {
+
+    li.innerHTML = `
+        <span class="icone-lancamento">🆕</span>
+        ${linha}
+    `;
+
+    li.classList.add("linha-lancamento");
+
+} else {
+
+    li.innerText = linha;
+
+}
         li.addEventListener('click', () => mostrarLinha(linha));
         listaLinhas.appendChild(li);
     });
