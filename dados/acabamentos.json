@@ -103,5 +103,10 @@
         { "nome": "Branco", "imagem": "mdp_branco.jpg" },
         { "nome": "Gris", "imagem": "mdp_gris.jpg" },
         { "nome": "Preto Onix", "imagem": "mdp_preto_onix.jpg" }
+    ],
+    "estrutura_eletrica": [
+        { "nome": "Prata", "imagem": "metal_prata.jpg" },
+        { "nome": "Branco", "imagem": "metal_branco.jpg" },
+        { "nome": "Preto", "imagem": "metal_preto.jpg" }
     ]
 }
