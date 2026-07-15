@@ -325,78 +325,198 @@ if (dados.obs_acabamentos) {
 // 5. RENDERIZAÇÃO DOS PRODUTOS
 // =============================================================================
 
-/**
- * Renderiza a lista de produtos agrupados por grupo, exibindo cards com detalhes.
- * @param {Array} listaProdutos - Array de objetos de produto.
- */
 function renderizarTabela(listaProdutos) {
+
     const container = document.getElementById('lista-produtos');
+
     if (!container) return;
 
     container.innerHTML = '';
 
-    // Agrupa produtos pela propriedade "grupo" (padrão "OUTROS").
+    // Agrupa produtos
     const grupos = {};
+
     listaProdutos.forEach(produto => {
+
         const grupo = produto.grupo || 'OUTROS';
+
         if (!grupos[grupo]) {
+
             grupos[grupo] = [];
+
         }
+
         grupos[grupo].push(produto);
+
     });
 
-    // Para cada grupo cria título, especificação opcional e área de cards.
     Object.entries(grupos).forEach(([nomeGrupo, produtosGrupo]) => {
+
         const especificacao = produtosGrupo[0].especificacao || '';
         const obs = produtosGrupo[0].obs || '';
 
+        // ===========================
+        // TÍTULO
+        // ===========================
+
         const tituloGrupo = document.createElement('h2');
+
         tituloGrupo.className = 'titulo-grupo';
+
         tituloGrupo.innerText = nomeGrupo;
+
         container.appendChild(tituloGrupo);
 
+        // ===========================
+        // ESPECIFICAÇÃO
+        // ===========================
+
         if (especificacao) {
+
             const descricao = document.createElement('p');
+
             descricao.className = 'descricao-grupo';
+
             descricao.innerText = especificacao;
+
             container.appendChild(descricao);
+
         }
-        
+
+        // ===========================
+        // OBSERVAÇÃO
+        // ===========================
+
         if (obs) {
+
             const descricao = document.createElement('p');
+
             descricao.className = 'descricao-obs';
+
             descricao.innerText = obs;
+
             container.appendChild(descricao);
+
         }
+
+        // ===========================
+        // BLOCOS EXPLICATIVOS
+        // ===========================
+
+        produtosGrupo
+            .filter(p => p.tipo?.trim().toUpperCase() === "BLOCO")
+            .forEach(produto => {
+
+                const bloco = document.createElement("div");
+
+                bloco.className = "bloco-explicativo";
+
+                bloco.innerHTML = `
+
+                    <h3>${produto.titulo}</h3>
+
+                    <div class="descricao-bloco">
+
+                        ${produto.descricao}
+
+                    </div>
+
+                    ${produto.imagem ?
+
+                        `
+                        <img
+                            src="imagens/${produto.imagem}"
+                            class="imagem-bloco"
+                            onerror="this.src='imagens/sem_imagem.jpg'"
+                        >
+                        `
+
+                        : ""
+
+                    }
+
+                `;
+
+                container.appendChild(bloco);
+
+            });
+
+        // ===========================
+        // GRID DE PRODUTOS
+        // ===========================
 
         const areaGrupo = document.createElement('div');
+
         areaGrupo.className = 'cards-grupo';
 
-        produtosGrupo.forEach(produto => {
-            const card = document.createElement('div');
-            card.classList.add('card-produto');
-            card.innerHTML = `
-                ${produto.badge ? `<div class="badge-produto">${produto.badge}</div>` : ''}
-                <img
-                   src="imagens/${produto.imagem || 'sem_imagem.jpg'}"
-                   class="imagem-produto"
-                   onerror="this.src='imagens/sem_imagem.jpg'"
-                >
-                <h3>${produto.codigo}</h3>
-                <p class="descricao-produto">${produto.descricao}</p>
-                <p class="dimensao-produto">L ${produto.largura} X P ${produto.profundidade} X A ${produto.altura}</p>
-                <p class="valor-produto">${formatarMoeda(produto.valor)}</p>
-                <button class="btn-detalhes">Ver detalhes</button>
-            `;
+        produtosGrupo
+            .filter(p => p.tipo?.trim().toUpperCase() !== "BLOCO")
+            .forEach(produto => {
 
-            const botao = card.querySelector('.btn-detalhes');
-            botao.addEventListener('click', () => abrirModalProduto(produto));
+                const card = document.createElement('div');
 
-            areaGrupo.appendChild(card);
-        });
+                card.classList.add('card-produto');
+
+                card.innerHTML = `
+
+                    ${produto.badge ?
+
+                        `<div class="badge-produto">${produto.badge}</div>`
+
+                        : ""
+
+                    }
+
+                    <img
+                        src="imagens/${produto.imagem || 'sem_imagem.jpg'}"
+                        class="imagem-produto"
+                        onerror="this.src='imagens/sem_imagem.jpg'"
+                    >
+
+                    <h3>${produto.codigo}</h3>
+
+                    <p class="descricao-produto">
+
+                        ${produto.descricao}
+
+                    </p>
+
+                    <p class="dimensao-produto">
+
+                        L ${produto.largura}
+                        X
+                        P ${produto.profundidade}
+                        X
+                        A ${produto.altura}
+
+                    </p>
+
+                    <p class="valor-produto">
+
+                        ${formatarMoeda(produto.valor)}
+
+                    </p>
+
+                    <button class="btn-detalhes">
+
+                        Ver detalhes
+
+                    </button>
+
+                `;
+
+                const botao = card.querySelector('.btn-detalhes');
+
+                botao.addEventListener('click', () => abrirModalProduto(produto));
+
+                areaGrupo.appendChild(card);
+
+            });
 
         container.appendChild(areaGrupo);
+
     });
+
 }
 
 /**
