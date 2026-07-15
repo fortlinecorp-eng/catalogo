@@ -141,7 +141,7 @@
     "acabamentos": {
       "Melamínico": "melaminico",
       "Estrutura Elétrica e Caixa de Tomada": "estrutura_eletrica",
-      "Gaveta em aço": "gaveta_aco"
+      "Gaveta em aço": "estrutura_eletrica"
     }
   }
 }
