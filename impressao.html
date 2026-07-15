@@ -274,7 +274,9 @@ Object.entries(grupos)
         //agrupamento nos cards    
         const agrupamentos = {};
 
-produtosGrupo.forEach(produto => {
+produtosGrupo
+.filter(p => (p.tipo || '').toUpperCase() !== 'BLOCO')
+.forEach(produto => {
 
     const chave =
         produto.agrupamento || '';
@@ -309,6 +311,37 @@ produtosGrupo.forEach(produto => {
 
             <div class="cards-grupo">
         `;
+
+        const blocos = produtosGrupo.filter(
+    p => (p.tipo || '').toUpperCase() === 'BLOCO'
+);
+
+blocos.forEach(bloco => {
+
+    html += `
+
+        <div class="bloco-explicativo">
+
+            <h3>${bloco.titulo}</h3>
+
+            ${bloco.descricao}
+
+            ${
+                bloco.imagem
+                ? `
+                    <img
+                        src="imagens/${bloco.imagem}"
+                        class="imagem-bloco"
+                    >
+                `
+                : ''
+            }
+
+        </div>
+
+    `;
+
+});
 
 Object.entries(agrupamentos)
 .forEach(([agrupamento, itens]) => {
