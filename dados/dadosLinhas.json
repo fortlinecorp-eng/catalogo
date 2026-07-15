@@ -140,8 +140,7 @@
     "Composições": "<ul><li>Mesa de Trabalho</li><li>Mesa Reunião</li><li>Mesa Plataforma</li><li>Mesa Gerência</li>",
     "acabamentos": {
       "Melamínico": "melaminico",
-      "Estrutura Elétrica e Caixa de Tomada": "estrutura_eletrica",
-      "Gaveta em aço": "estrutura_eletrica"
+      "Estrutura Elétrica, Caixa de Tomada e Gaveta em Aço": "estrutura_eletrica"
     }
   }
 }
