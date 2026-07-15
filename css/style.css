@@ -712,3 +712,29 @@ tr:hover {
     flex-shrink:0;
 
 }
+.bloco-explicativo {
+
+    grid-column: 1 / -1;
+
+    background: #FFFFFF;
+
+    border: 2px solid #215AA8;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 10px;
+
+}
+.imagem-bloco{
+
+    width:100%;
+
+    max-width:700px;
+
+    display:block;
+
+    margin:20px auto;
+
+}
