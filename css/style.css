@@ -738,3 +738,15 @@ tr:hover {
     margin:20px auto;
 
 }
+.descricao-bloco{
+
+   
+    text-align:justify;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+
+    text-indent: 30px;
+    
+}
