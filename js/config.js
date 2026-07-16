@@ -2,7 +2,7 @@ const configuracaoCatalogo = {
 
     versao: 'TAB-0126-A - ABRIL',
 
-    cacheVersion: '1.0.18',
+    cacheVersion: '1.0.19',
 
     empresa: 'FORTLINE',
 
