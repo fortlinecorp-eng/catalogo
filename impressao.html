@@ -183,6 +183,16 @@ Object.entries(
 
             <div class="card-acabamento-impressao">
 
+                ${
+                        item.badge
+                        ? `
+                             <div class="badge-acabamento">
+                                 ${item.badge}
+                            </div>
+                        `
+                        : ""
+                }
+
                 <img
                     src="imagens/${item.imagem}"
                     class="imagem-acabamento-impressao"
