@@ -754,7 +754,7 @@ tr:hover {
 }
 .badge-acabamento{
 
-    position:absolute;
+    position:absolute !important;
 
     top:8px;
 
