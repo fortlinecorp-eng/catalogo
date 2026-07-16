@@ -6,10 +6,10 @@
         { "nome": "Ovo", "imagem": "ovo.jpg" },
         { "nome": "Platina", "imagem": "mdp_platina.jpg" },
         { "nome": "Preto", "imagem": "mdp_preto.jpg" },        
-        { "nome": "Azul Secreto", "imagem": "mdp_azul_secreto.jpg" },
-        { "nome": "Blush", "imagem": "mdp_blush.jpg" },
-        { "nome": "Cinza Sagrado", "imagem": "mdp_cinza_sagrado.jpg" },
-        { "nome": "Moss", "imagem": "mdp_moss.jpg" },
+        { "nome": "Azul Secreto", "imagem": "mdp_azul_secreto.jpg", "badge": "NOVO" },
+        { "nome": "Blush", "imagem": "mdp_blush.jpg", "badge": "NOVO" },
+        { "nome": "Cinza Sagrado", "imagem": "mdp_cinza_sagrado.jpg", "badge": "NOVO" },
+        { "nome": "Moss", "imagem": "mdp_moss.jpg", "badge": "NOVO" },
         { "nome": "Carvalho Avelã", "imagem": "mdp_carvalho_avela.jpg" },
         { "nome": "Carvalho Hanover", "imagem": "mdp_carvalho_hanover.jpg" },
         { "nome": "Carvalho Munique", "imagem": "mdp_carvalho_munique.jpg" },
@@ -17,7 +17,6 @@
         { "nome": "Itapuã", "imagem": "mdp_itapua.jpg" },
         { "nome": "Noce Mare", "imagem": "mdp_noce_mare.jpg" },
         { "nome": "Nogueira Thar", "imagem": "mdp_nogueira_thar.jpg" }
-        
     ],
         "metalicos": [
         { "nome": "Terracota", "imagem": "metal_terracota.jpg" },
