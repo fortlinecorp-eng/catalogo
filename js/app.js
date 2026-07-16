@@ -217,6 +217,16 @@ if (dados.acabamentos && Object.keys(dados.acabamentos).length > 0) {
 
                     <div class="card-acabamento">
 
+                       ${
+                           item.badge
+                           ? `
+                           <div class="badge-acabamento">
+                           ${item.badge}
+                           </div>
+                            `
+                            : ""
+                        }
+
                         <img
                             src="imagens/${item.imagem}"
                             class="imagem-acabamento"
