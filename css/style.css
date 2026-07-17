@@ -65,6 +65,13 @@ body {
     cursor: pointer;
 
     transition: 0.2s;
+
+    /*incluido na atualização de aparecer bolinha na linha quando tiver lançamento*/
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
 }
 
 .sidebar li:hover {
@@ -754,7 +761,7 @@ tr:hover {
 }
 .badge-acabamento{
 
-    position:absolute !important;
+    position:absolute;
 
     top:8px;
 
@@ -773,5 +780,128 @@ tr:hover {
     border-radius:20px;
 
     z-index:2;
+
+}
+.bolinha-novidade{
+
+    display:inline-block;
+
+    width:8px;
+    height:8px;
+
+    margin-right:8px;
+
+    border-radius:50%;
+
+    background:#ff4040;
+
+    animation:pulsar 1.8s infinite;
+
+}
+@keyframes pulsar{
+
+    0%{
+        transform:scale(1);
+        box-shadow:0 0 0 0 rgba(255,64,64,.8);
+    }
+
+    70%{
+        transform:scale(1.15);
+        box-shadow:0 0 0 8px rgba(255,64,64,0);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+.painel-novidades{
+
+    position:fixed;
+
+    top:0;
+    right:-420px;
+
+    width:400px;
+    height:100vh;
+
+    background:white;
+
+    box-shadow:-6px 0 20px rgba(0,0,0,.20);
+
+    transition:.35s;
+
+    z-index:9999;
+
+    overflow-y:auto;
+
+}
+
+.painel-novidades.aberto{
+
+    right:0;
+
+}
+.btn-novidades {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: rgba(255,255,255,.15);
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    border-radius: 10px;
+
+    padding: 8px 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .25s;
+
+}
+
+.btn-novidades:hover{
+
+    background: rgba(255,255,255,.25);
+
+}
+.item-novidade{
+
+    display:flex;
+
+    gap:12px;
+
+    padding:14px;
+
+    border-bottom:1px solid #ececec;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.item-novidade:hover{
+
+    background:#f5f8ff;
+
+}
+
+.icone-novidade{
+
+    font-size:22px;
+
+    width:30px;
+
+    text-align:center;
 
 }
