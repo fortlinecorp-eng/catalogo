@@ -962,7 +962,7 @@ function montarPainelNovidades() {
                 tipo: "produto",
                 icone: "🟠",
                 titulo: produto.badge,
-                descricao: `${produto.codigo} • ${produto.linha}`
+                descricao: `${produto.codigo} • ${produto.descricao} • ${produto.linha}`
             });
         }
     });
