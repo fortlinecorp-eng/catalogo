@@ -787,6 +787,7 @@ produtos.forEach(produto=>{
 
 //percorremos acabamentos
 
+
 Object.values(acabamentosPadrao).forEach(lista=>{
 
     lista.forEach(item=>{
@@ -843,6 +844,7 @@ novidades.forEach(item=>{
 });
 
 }
+/*
 function montarPainelNovidades() {
 
     const lista = document.getElementById("lista-novidades");
@@ -931,29 +933,92 @@ novidades.forEach(item => {
 
 });
 
-
-
-    // aqui vamos preencher o array
-
 }
-function configurarPainelNovidades() {
+*/
 
+function montarPainelNovidades() {
+    const lista = document.getElementById("lista-novidades");
+    if (!lista) return;
+
+    lista.innerHTML = "";
+    const novidades = [];
+
+    // 1. Procurar linhas
+    Object.entries(dadosLinhas).forEach(([linha, dados]) => {
+        if ((dados.status || "").toLowerCase() === "lancamento") {
+            novidades.push({
+                tipo: "linha",
+                icone: "🔴",
+                titulo: "Nova Linha",
+                descricao: linha
+            });
+        }
+    });
+
+    // 2. Procurar produtos
+    produtos.forEach(produto => {
+        if ((produto.badge || "").trim() !== "") {
+            novidades.push({
+                tipo: "produto",
+                icone: "🟠",
+                titulo: produto.badge,
+                descricao: `${produto.codigo} • ${produto.linha}`
+            });
+        }
+    });
+
+    // 3. Contar as novidades
+    const quantidadeNovidades = novidades.length;
+
+    // 4. Atualizar o botão com o contador
+    const botaoNovidades = document.getElementById("btn-novidades"); // Substitua pelo ID real do seu botão
+    if (botaoNovidades) {
+        if (quantidadeNovidades > 0) {
+            botaoNovidades.textContent = `🔔 Novidades (${quantidadeNovidades})`;
+        } else {
+            botaoNovidades.textContent = "🔔 Novidades";
+        }
+    }
+
+    // 5. Renderizar no painel (usando array.map + join para melhor performance)
+    if (quantidadeNovidades > 0) {
+        const htmlItens = novidades.map(item => `
+            <div class="item-novidade">
+                <div class="icone-novidade">
+                    ${item.icone}
+                </div>
+                <div>
+                    <strong>${item.titulo}</strong>
+                    <br>
+                    ${item.descricao}
+                </div>
+            </div>
+        `).join("");
+        
+        lista.innerHTML = htmlItens;
+    } else {
+        lista.innerHTML = "<p>Nenhuma novidade no momento.</p>";
+    }
+}
+
+
+function configurarPainelNovidades() {
     const btnNovidades = document.getElementById("btn-novidades");
     const painel = document.getElementById("painel-novidades");
-    const fechar = document.getElementById("fechar-novidades");
 
-    if (!btnNovidades || !painel || !fechar) return;
+    if (!btnNovidades || !painel) return;
 
-    btnNovidades.addEventListener("click", () => {
-
-        painel.classList.add("aberto");
-
+    // Alterna a classe 'aberto' ao clicar no botão
+    btnNovidades.addEventListener("click", (evento) => {
+        painel.classList.toggle("aberto");
+        evento.stopPropagation(); // Evita que este clique feche o painel imediatamente
     });
 
-    fechar.addEventListener("click", () => {
-
-        painel.classList.remove("aberto");
-
+    // Fecha o painel se clicar em qualquer lugar fora dele
+    document.addEventListener("click", (evento) => {
+        if (!painel.contains(evento.target) && evento.target !== btnNovidades) {
+            painel.classList.remove("aberto");
+        }
     });
-
 }
+
