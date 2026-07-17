@@ -1100,7 +1100,7 @@ item.addEventListener("click", () => {
 
                 setTimeout(() => {
                     card.classList.remove("card-destacado");
-                }, 1500);
+                }, 3500);
 
             }
 
