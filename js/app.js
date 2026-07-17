@@ -497,6 +497,8 @@ function renderizarTabela(listaProdutos) {
 
                 card.classList.add('card-produto');
 
+                card.dataset.codigo = produto.codigo;
+
                 card.innerHTML = `
 
                     ${produto.badge ?
@@ -947,11 +949,18 @@ function montarPainelNovidades() {
     Object.entries(dadosLinhas).forEach(([linha, dados]) => {
         if ((dados.status || "").toLowerCase() === "lancamento") {
             novidades.push({
-                tipo: "linha",
-                icone: "🔴",
-                titulo: "Nova Linha",
-                descricao: linha
-            });
+
+                             tipo: "linha",
+
+                             icone: "🔴",
+
+                             titulo: "Nova Linha",
+
+                             descricao: linha,
+
+                             linha: linha
+
+                            });
         }
     });
 
@@ -959,13 +968,54 @@ function montarPainelNovidades() {
     produtos.forEach(produto => {
         if ((produto.badge || "").trim() !== "") {
             novidades.push({
-                tipo: "produto",
-                icone: "🟠",
-                titulo: produto.badge,
-                descricao: `${produto.codigo} • ${produto.descricao} • ${produto.linha}`
-            });
+
+                             tipo: "produto",
+
+                             icone: "🟠",
+
+                             titulo: produto.badge,
+
+                             descricao: `${produto.codigo} • ${produto.descricao} • ${produto.linha}`,
+
+                             linha: produto.linha,
+
+                             codigo: produto.codigo,
+
+                             produto: produto
+
+                            });
         }
     });
+
+    // 3. Procurar acabamentos novos
+
+Object.entries(acabamentosPadrao).forEach(([categoria, itens]) => {
+
+    itens.forEach(item => {
+
+        if ((item.badge || "").trim() !== "") {
+
+            novidades.push({
+
+    tipo: "acabamento",
+
+    icone: "🟢",
+
+    titulo: item.badge,
+
+    descricao: `${item.nome} • ${categoria}`,
+
+    acabamento: item,
+
+    categoria: categoria
+
+});
+
+        }
+
+    });
+
+});
 
     // 3. Contar as novidades
     const quantidadeNovidades = novidades.length;
@@ -981,22 +1031,100 @@ function montarPainelNovidades() {
     }
 
     // 5. Renderizar no painel (usando array.map + join para melhor performance)
-    if (quantidadeNovidades > 0) {
-        const htmlItens = novidades.map(item => `
-            <div class="item-novidade">
-                <div class="icone-novidade">
-                    ${item.icone}
-                </div>
-                <div>
-                    <strong>${item.titulo}</strong>
-                    <br>
-                    ${item.descricao}
-                </div>
+   if (quantidadeNovidades > 0) {
+
+    novidades.forEach(novidade => {
+
+        const item = document.createElement("div");
+
+        item.className = "item-novidade";
+
+        item.innerHTML = `
+
+            <div class="icone-novidade">
+
+                ${novidade.icone}
+
             </div>
-        `).join("");
-        
-        lista.innerHTML = htmlItens;
-    } else {
+
+            <div>
+
+                <strong>${novidade.titulo}</strong>
+
+                <br>
+
+                ${novidade.descricao}
+
+            </div>
+
+        `;
+
+        lista.appendChild(item);
+
+item.style.cursor = "pointer";
+
+item.addEventListener("click", () => {
+
+    document
+        .getElementById("painel-novidades")
+        .classList
+        .remove("aberto");
+
+    // Linha nova
+    if (novidade.tipo === "linha") {
+
+        mostrarLinha(novidade.linha);
+        return;
+
+    }
+
+    // Produto novo
+    if (novidade.tipo === "produto") {
+
+        mostrarLinha(novidade.linha);
+
+        setTimeout(() => {
+
+            const card = document.querySelector(
+                `[data-codigo="${novidade.codigo}"]`
+            );
+
+            if (card) {
+
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                card.classList.add("card-destacado");
+
+                setTimeout(() => {
+                    card.classList.remove("card-destacado");
+                }, 1500);
+
+            }
+
+        }, 100);
+
+        return;
+
+    }
+
+    // Acabamento novo
+    if (novidade.tipo === "acabamento") {
+
+        abrirModalAcabamento(
+            novidade.acabamento,
+            novidade.categoria
+        );
+
+    }
+
+});
+
+    });
+
+} else {
         lista.innerHTML = "<p>Nenhuma novidade no momento.</p>";
     }
 }
@@ -1020,5 +1148,11 @@ function configurarPainelNovidades() {
             painel.classList.remove("aberto");
         }
     });
+}
+function abrirModalAcabamento(acabamento, categoria){
+
+    console.log(acabamento);
+    console.log(categoria);
+
 }
 
