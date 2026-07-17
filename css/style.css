@@ -955,7 +955,7 @@ tr:hover {
 
     transform: rotate(20deg);
 
-    animation: shimmer-card 1.2s ease;
+    animation: shimmer-card 3s ease;
 
     pointer-events: none;
 
