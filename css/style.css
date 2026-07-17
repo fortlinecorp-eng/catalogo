@@ -843,6 +843,12 @@ tr:hover {
     right:0;
 
 }
+.painel-novidades.fechado{
+
+    left:0;
+
+}
+
 .btn-novidades {
 
     display: flex;
@@ -903,5 +909,70 @@ tr:hover {
     width:30px;
 
     text-align:center;
+
+}
+.card-destacado{
+
+    position: relative;
+
+    overflow: hidden;
+
+    outline: 2px solid #215AA8;
+
+    outline-offset: 2px;
+
+}
+
+.card-destacado::after{
+
+    content: "";
+
+    position: absolute;
+
+    top: -40%;
+
+    left: -120%;
+
+    width: 45%;
+
+    height: 180%;
+
+    background: linear-gradient(
+
+        115deg,
+
+        rgba(33,90,168,0),
+
+        rgba(33,90,168,.15),
+
+        rgba(110,168,254,.95),
+
+        rgba(33,90,168,.20),
+
+        rgba(33,90,168,0)
+
+    );
+
+    transform: rotate(20deg);
+
+    animation: shimmer-card 1.2s ease;
+
+    pointer-events: none;
+
+}
+
+@keyframes shimmer-card{
+
+    from{
+
+        left:-120%;
+
+    }
+
+    to{
+
+        left:140%;
+
+    }
 
 }
