@@ -140,32 +140,62 @@ linhasUnicas.forEach(nome => {
 linhasLancamento.sort();
 linhasNormais.sort();
 
+const linhasComNovidade = new Set(
+    produtos
+        .filter(p => (p.badge || '').trim() !== '')
+        .map(p => p.linha)
+);
+
 const linhasOrdenadas = [
     ...linhasLancamento,
     ...linhasNormais
 ];
 
-    linhasOrdenadas.forEach(linha => {
-        const li = document.createElement('li');
- if (dadosLinhas[linha]?.status === "lancamento") {
+   linhasOrdenadas.forEach(linha => {
+
+    const li = document.createElement('li');
+
+    const temNovidade =
+        linhasComNovidade.has(linha);
+
+    const ehLancamento =
+        dadosLinhas[linha]?.status === "lancamento";
 
     li.innerHTML = `
-        ${linha}
-        <span class="badge-linha">
-            LANÇAMENTO
+
+        ${
+            temNovidade
+                ? '<span class="bolinha-novidade"></span>'
+                : ''
+        }
+
+        <span class="nome-linha">
+            ${linha}
         </span>
+
+        ${
+            ehLancamento
+                ? `
+                    <span class="badge-linha">
+                        LANÇAMENTO
+                    </span>
+                  `
+                : ''
+        }
+
     `;
 
-    li.classList.add("linha-lancamento");
+    if (ehLancamento) {
 
-} else {
+        li.classList.add("linha-lancamento");
 
-    li.innerText = linha;
+    }
 
-}
-        li.addEventListener('click', () => mostrarLinha(linha));
-        listaLinhas.appendChild(li);
-    });
+    li.addEventListener('click', () => mostrarLinha(linha));
+
+    listaLinhas.appendChild(li);
+
+});
 }
 
 /**
@@ -664,6 +694,11 @@ function iniciarCatalogo() {
 
         configurarBusca();
 
+        configurarPainelNovidades();
+
+        montarPainelNovidades();
+       
+
     }
 
 }
@@ -703,4 +738,222 @@ if (fecharModal) {
         const modal = document.getElementById('modal-produto');
         if (modal) modal.style.display = 'none';
     });
+}
+
+function montarNovidades(){
+
+    const novidades = [];
+
+    //percorremos linhas novas
+   Object.entries(dadosLinhas).forEach(([linha,dados])=>{
+
+    if(dados.status==="lancamento"){
+
+        novidades.push({
+
+            tipo:"linha",
+
+            titulo:"Nova linha",
+
+            texto:linha
+
+        });
+
+    }
+
+}); 
+
+//percorremos produtos
+
+produtos.forEach(produto=>{
+
+    if(produto.badge){
+
+        novidades.push({
+
+            tipo:"produto",
+
+            titulo:produto.badge,
+
+            texto:produto.descricao,
+
+            linha:produto.linha
+
+        });
+
+    }
+
+});
+
+//percorremos acabamentos
+
+Object.values(acabamentosPadrao).forEach(lista=>{
+
+    lista.forEach(item=>{
+
+        if(item.badge){
+
+            novidades.push({
+
+                tipo:"acabamento",
+
+                titulo:item.badge,
+
+                texto:item.nome
+
+            });
+
+        }
+
+    });
+
+});
+
+//rederizamos
+
+const lista =
+    document.getElementById("lista-novidades");
+
+lista.innerHTML="";
+
+//percorre
+
+novidades.forEach(item=>{
+
+    lista.innerHTML += `
+
+        <div class="item-novidade">
+
+            <h4>
+
+                ${item.titulo}
+
+            </h4>
+
+            <p>
+
+                ${item.texto}
+
+            </p>
+
+        </div>
+
+    `;
+
+});
+
+}
+function montarPainelNovidades() {
+
+    const lista = document.getElementById("lista-novidades");
+
+    if (!lista) return;
+
+    lista.innerHTML = "";
+
+    const novidades = [];
+
+    //procurar linhas
+
+    Object.entries(dadosLinhas).forEach(([linha, dados]) => {
+
+    if ((dados.status || "").toLowerCase() === "lancamento") {
+
+        novidades.push({
+
+            tipo: "linha",
+
+            icone: "🔴",
+
+            titulo: "Nova Linha",
+
+            descricao: linha
+
+        });
+
+    }
+
+});
+
+//procurar produtos
+
+produtos.forEach(produto => {
+
+    if ((produto.badge || "").trim() !== "") {
+
+        novidades.push({
+
+            tipo: "produto",
+
+            icone: "🟠",
+
+            titulo: produto.badge,
+
+            descricao: `${produto.codigo} • ${produto.linha}`
+
+        });
+
+    }
+
+});
+
+//renderizar
+
+novidades.forEach(item => {
+
+    lista.innerHTML += `
+
+        <div class="item-novidade">
+
+            <div class="icone-novidade">
+
+                ${item.icone}
+
+            </div>
+
+            <div>
+
+                <strong>
+
+                    ${item.titulo}
+
+                </strong>
+
+                <br>
+
+                ${item.descricao}
+
+            </div>
+
+        </div>
+
+    `;
+
+});
+
+
+
+    // aqui vamos preencher o array
+
+}
+function configurarPainelNovidades() {
+
+    const btnNovidades = document.getElementById("btn-novidades");
+    const painel = document.getElementById("painel-novidades");
+    const fechar = document.getElementById("fechar-novidades");
+
+    if (!btnNovidades || !painel || !fechar) return;
+
+    btnNovidades.addEventListener("click", () => {
+
+        painel.classList.add("aberto");
+
+    });
+
+    fechar.addEventListener("click", () => {
+
+        painel.classList.remove("aberto");
+
+    });
+
 }
