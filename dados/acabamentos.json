@@ -112,6 +112,7 @@
     "laca": [
         { "nome": "Braco 026 GGL", "imagem": "laca_flo_6529_026_ggl.jpg" },
         { "nome": "Preto M16", "imagem": "laca_preto_m16.jpg" },
-        { "nome": "Grafite M157", "imagem": "laca_grafite_m157.jpg" }
+        { "nome": "Grafite M157", "imagem": "laca_grafite_m157.jpg" },
+        { "nome": "Cinza S168", "imagem": "laca_cinza_s168.jpg" }
     ]
 }
