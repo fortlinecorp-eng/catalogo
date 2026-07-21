@@ -3,7 +3,7 @@
         { "nome": "Argila", "imagem": "mdp_argila.jpg" },
         { "nome": "Branco", "imagem": "mdp_branco.jpg" },
         { "nome": "Grafite", "imagem": "mdp_grafite.jpg" },
-        { "nome": "Ovo", "imagem": "ovo.jpg" },
+        { "nome": "Ovo", "imagem": "mdp_ovo.jpg" },
         { "nome": "Platina", "imagem": "mdp_platina.jpg" },
         { "nome": "Preto", "imagem": "mdp_preto.jpg" },        
         { "nome": "Azul Secreto", "imagem": "mdp_azul_secreto.jpg", "badge": "NOVO" },
