@@ -140,6 +140,7 @@
     "Composições": "<ul><li>Mesa de Trabalho</li><li>Mesa Reunião</li><li>Mesa Plataforma</li><li>Mesa Gerência</li>",
     "acabamentos": {
       "Melamínico": "melaminico",
+      "Acabamento Do Chanfro no Tampo da Gerência": "laca",
       "Estrutura Elétrica, Caixa de Tomada e Gaveta em Aço": "estrutura_eletrica"
     }
   }
