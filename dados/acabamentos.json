@@ -108,5 +108,10 @@
         { "nome": "Prata", "imagem": "metal_prata.jpg" },
         { "nome": "Branco", "imagem": "metal_branco.jpg" },
         { "nome": "Preto", "imagem": "metal_preto.jpg" }
+    ],
+    "laca": [
+        { "nome": "Braco 026 GGL", "imagem": "laca_flo_6529_026_ggl.jpg" },
+        { "nome": "Preto M16", "imagem": "laca_preto_m16.jpg" },
+        { "nome": "Grafite M157", "imagem": "laca_grafite_m157.jpg" }
     ]
 }
