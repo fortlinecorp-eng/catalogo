@@ -6,7 +6,7 @@
         { "nome": "Ovo", "imagem": "mdp_ovo.jpg" },
         { "nome": "Platina", "imagem": "mdp_platina.jpg" },
         { "nome": "Preto", "imagem": "mdp_preto.jpg" },        
-        { "nome": "Azul Secreto", "imagem": "mdp_azul_secreto.jpg", "badge": "NOVO" },
+        { "nome": "Azul Secreto", "imagem": "mdp_azul_secreto.jpg", "badge": "NOVO", "categoria": "Melamínico","descricao": "Acabamento melamínico de tonalidade azul com acabamento fosco.", "aplicacao": "Indicado para tampos, painéis e componentes em MDP 15, 18 e 25 mm", "linhas": ["ADAPTA","FIT","JUST","LEAN","SOFTLINE"] },
         { "nome": "Blush", "imagem": "mdp_blush.jpg", "badge": "NOVO" },
         { "nome": "Cinza Sagrado", "imagem": "mdp_cinza_sagrado.jpg", "badge": "NOVO" },
         { "nome": "Moss", "imagem": "mdp_moss.jpg", "badge": "NOVO" },
